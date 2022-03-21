@@ -19,9 +19,11 @@ numButtons.forEach(button => {
 
 opButtons.forEach(button => {
     button.addEventListener('click', (e) => {
-        inputOp += e.target.innerText;
-        first = input;
-        input = '';
+        if (!inputOp) {
+            first = input;
+            input = '';
+        }
+        inputOp = e.target.innerText;
         display.textContent = inputOp;
     })
 })
@@ -70,7 +72,7 @@ function operate(operator, a, b){
         case '+':
           return add(a, b)
         case '-':
-          return substract(a, b)
+          return subtract(a, b)
         case '*':
           return multiply(a, b)
         case '/':
